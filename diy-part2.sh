@@ -35,3 +35,10 @@ sed -i ' s/luci-theme-bootstrap/luci-theme-argon/g ' feeds/luci/collections/luci
 
 # 7.修正连接数（by ベ七秒鱼ベ）
 sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=165535' package/base-files/files/etc/sysctl.conf
+
+# 8.设置Timezone
+sed -i '/timezone='\''UTC'\''/a\\t\tset system.@system[-1].zonename='\''Asia/Shanghai'\''' package/base-files/files/bin/config_generate
+sed -i '/timezone='\''UTC'\''/s/UTC/CST-8/' package/base-files/files/bin/config_generate
+
+# 9.开起wifi
+#sed -i '/set wireless.radio${devidx}.disabled=1/d' package/kernel/mac80211/files/lib/wifi/mac80211.sh
