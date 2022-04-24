@@ -33,3 +33,6 @@ sed -i '/timezone='\''UTC'\''/s/UTC/CST-8/' package/base-files/files/bin/config_
 
 # 9.开起wifi
 #sed -i '/set wireless.radio${devidx}.disabled=1/d' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+
+# 10.去除virtiofs
+sed '617,632d'  package/kernel/linux/modules/fs.mk
